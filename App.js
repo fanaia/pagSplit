@@ -1,7 +1,5 @@
-import { Text } from "react-native"
+import AppRotas from "./src/rotas/AppRotas"
 
 export default function App() {
-    return <NavigationContainer>
-        <Text>App</Text>
-    </NavigationContainer>
+    return <AppRotas />
 }

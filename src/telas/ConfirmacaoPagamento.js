@@ -1,7 +1,15 @@
-import { Text } from "react-native"
+import { Text, TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 export default function ConfirmacaoPagamento() {
-    return <NavigationContainer>
+    const navigation = useNavigation();
+
+    return <>
         <Text>ConfirmacaoPagamento</Text>
-    </NavigationContainer>
+        <TouchableOpacity
+            onPress={() => navigation.navigate('Pagamento')}
+        >
+            <Text>Novo pagamento</Text>
+        </TouchableOpacity>
+    </>
 }

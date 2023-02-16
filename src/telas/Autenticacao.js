@@ -1,7 +1,15 @@
-import { Text } from "react-native"
+import { Text, TouchableOpacity } from "react-native"
+import { useNavigation } from '@react-navigation/core';
 
 export default function Autenticacao() {
-    return <NavigationContainer>
+    const navigation = useNavigation();
+
+    return <>
         <Text>Autenticacao</Text>
-    </NavigationContainer>
+        <TouchableOpacity
+            onPress={() => navigation.navigate('PagamentoRotas')}
+        >
+            <Text>Ir para Pagamento</Text>
+        </TouchableOpacity>
+    </>
 }
