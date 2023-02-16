@@ -1,7 +1,7 @@
 import { Text } from "react-native"
 
-export default function App() {
+export default function SelecaoPedido() {
     return <NavigationContainer>
-        <Text>App</Text>
+        <Text>SelecaoPedido</Text>
     </NavigationContainer>
 }

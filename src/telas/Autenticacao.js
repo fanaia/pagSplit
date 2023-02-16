@@ -1,7 +1,7 @@
 import { Text } from "react-native"
 
-export default function App() {
+export default function Autenticacao() {
     return <NavigationContainer>
-        <Text>App</Text>
+        <Text>Autenticacao</Text>
     </NavigationContainer>
 }

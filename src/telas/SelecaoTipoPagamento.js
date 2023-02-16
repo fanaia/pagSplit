@@ -1,7 +1,7 @@
 import { Text } from "react-native"
 
-export default function App() {
+export default function SelecaoTipoPagamento() {
     return <NavigationContainer>
-        <Text>App</Text>
+        <Text>SelecaoTipoPagamento</Text>
     </NavigationContainer>
 }
