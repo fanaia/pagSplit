@@ -1,5 +1,5 @@
-import AppRotas from "./src/rotas/AppRotas"
+import AppNavigator from './src/navigation/AppNavigator';
 
 export default function App() {
-    return <AppRotas />
+    return <AppNavigator />;
 }
