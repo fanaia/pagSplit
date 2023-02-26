@@ -1,5 +1,12 @@
+import React from 'react';
+
+import {AutenticacaoProvider} from './src/contexts/AutenticacaoContext';
 import AppNavigator from './src/navigation/AppNavigator';
 
 export default function App() {
-    return <AppNavigator />;
+    return (
+        <AutenticacaoProvider>
+            <AppNavigator />
+        </AutenticacaoProvider>
+    );
 }

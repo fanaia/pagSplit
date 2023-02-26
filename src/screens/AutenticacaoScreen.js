@@ -2,24 +2,22 @@ import React, {useState, useContext} from 'react';
 import {View, TextInput, Button} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
-import UsuarioAutenticado from '../contexts/usuario';
 import {Autenticar} from '../services/autenticacaoService';
+import {AutenticacaoContext} from '../contexts/AutenticacaoContext';
 
 const AutenticacaoScreen = () => {
     const navigation = useNavigation();
+    const {setUsuarioAutenticado} = useContext(AutenticacaoContext);
+
     const [chaveAcesso, setChaveAcesso] = useState('');
-
-    // const [usuarioAutenticado, setUsuarioAutenticado] = useState({});
-
-    const usuarioAutenticado = useContext(UsuarioAutenticado);
 
     const handleAutenticar = async () => {
         const resultado = await Autenticar(chaveAcesso);
 
-        console.log(resultado.hasOwnProperty('idUsuario'));
+        console.log(resultado);
 
         if (resultado.hasOwnProperty('idUsuario')) {
-            usuarioAutenticado(resultado);
+            setUsuarioAutenticado(resultado);
             navigation.navigate('PagamentoNavigator');
         } else {
             console.log('erro autenticacao');
