@@ -19,7 +19,14 @@ const PagamentoScreen = () => {
     return (
         <View>
             <Text>Pagamanto</Text>
-            <Text>Pedido {pedido.IDPedido}</Text>
+            <Text>Pedido: {pedido.IDPedido}</Text>
+            <Text>
+                {pedido.IDTipoPedido === 10
+                    ? `Mesa ${pedido.NumeroMesa}`
+                    : pedido.IDTipoPedido === 20
+                    ? `Mesa ${pedido.NumeroComanda}`
+                    : 'Balcão'}
+            </Text>
             <View>
                 <TipoPagamento />
 

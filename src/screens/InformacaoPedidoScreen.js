@@ -16,12 +16,18 @@ const InformacaoPedidoScreen = () => {
             <Text>Informacao Pedido</Text>
             <View>
                 <Text>Pedido: {pedido.IDPedido}</Text>
-                <Text>Comanda 102</Text>
-                <Text>Fabio</Text>
-                <Text>Qtd itens: 3</Text>
-                <Text>Total: R$ 94,00</Text>
-                <Text>Pago: R$ 24,00</Text>
-                <Text>Pendente: R$ 70,00</Text>
+                <Text>
+                    {pedido.IDTipoPedido === 10
+                        ? `Mesa ${pedido.NumeroMesa}`
+                        : pedido.IDTipoPedido === 20
+                        ? `Mesa ${pedido.NumeroComanda}`
+                        : 'Balcão'}
+                </Text>
+                <Text>{pedido.Nome}</Text>
+                <Text>Qtd itens: {pedido.Itens.length}</Text>
+                <Text>Total: R$ {pedido.ValorTotal}</Text>
+                <Text>Pago: -</Text>
+                <Text>Pendente: -</Text>
             </View>
             <View>
                 <TouchableOpacity onPress={handleAvancar}>
