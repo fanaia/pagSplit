@@ -5,11 +5,13 @@ export async function Autenticar(chaveAcesso) {
         const resultado = await Api.get(
             `/api/autenticacao/senha/${chaveAcesso}`,
         )
-            .then(function (response) {
-                return response.data;
+            .then(response => {
+                const statusCode = response.status;
+                return {dados: response.data, statusCode};
             })
-            .catch(function (error) {
-                return {};
+            .catch(error => {
+                const statusCode = error.response.status;
+                return {dados: null, statusCode};
             });
 
         return resultado;

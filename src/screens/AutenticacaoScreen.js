@@ -14,10 +14,8 @@ const AutenticacaoScreen = () => {
     const handleAutenticar = async () => {
         const resultado = await Autenticar(chaveAcesso);
 
-        console.log(resultado);
-
-        if (resultado.hasOwnProperty('idUsuario')) {
-            setUsuarioAutenticado(resultado);
+        if (resultado.statusCode === 200) {
+            setUsuarioAutenticado(resultado.dados);
             navigation.navigate('PagamentoNavigator');
         } else {
             setUsuarioAutenticado({});
