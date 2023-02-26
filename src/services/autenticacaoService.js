@@ -1,9 +1,10 @@
-import api from './api';
+import Api from './Api';
 
 export async function Autenticar(chaveAcesso) {
     try {
-        const resultado = await api
-            .get(`/api/autenticacao/senha/${chaveAcesso}`)
+        const resultado = await Api.get(
+            `/api/autenticacao/senha/${chaveAcesso}`,
+        )
             .then(function (response) {
                 return response.data;
             })

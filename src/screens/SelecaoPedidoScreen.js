@@ -3,32 +3,36 @@ import {View, Text, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
 import {AutenticacaoContext} from '../contexts/AutenticacaoContext';
-import TipoPedido from '../components/TipoPedido';
+import SelecionaPedido from '../components/SelecionaPedido';
 
 const SelecaoPedidoScreen = () => {
     const navigation = useNavigation();
 
     const {usuarioAutenticado} = useContext(AutenticacaoContext);
-    const [tipoPedido, setTipoPedido] = useState('');
-    const [numeroPedido, setNumeroPedido] = useState('');
+    const [pedidoSelecionado, setPedidoSelecionado] = useState({});
 
-    // console.log(usuarioAutenticado);
+    const handleSelecionaPedido = pedido => {
+        setPedidoSelecionado(pedido);
+    };
 
     function handleAvancar() {
-        navigation.navigate('ScreenInformacaoPedido', {
-            tipoPedido: tipoPedido,
-            numeroPedido: numeroPedido,
-        });
+        navigation.navigate('ScreenInformacaoPedido');
     }
 
     return (
         <View>
             <View>
                 <Text>Pedido</Text>
-                <TipoPedido
-                    tipoPedido={tipoPedido}
-                    setTipoPedido={setTipoPedido}
-                />
+                <SelecionaPedido onSelecionaPedido={handleSelecionaPedido} />
+            </View>
+            <View>
+                <Text>
+                    Tipo do pedido selecionado: {pedidoSelecionado.tipoPedido}
+                </Text>
+                <Text>
+                    Número da mesa/comanda:{' '}
+                    {pedidoSelecionado.numeroMesaComanda}
+                </Text>
             </View>
             <View>
                 <TouchableOpacity onPress={handleAvancar}>

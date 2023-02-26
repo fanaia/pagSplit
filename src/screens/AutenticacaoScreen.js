@@ -2,7 +2,7 @@ import React, {useState, useContext} from 'react';
 import {View, TextInput, Button} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
-import {Autenticar} from '../services/autenticacaoService';
+import {Autenticar} from '../services/AutenticacaoService';
 import {AutenticacaoContext} from '../contexts/AutenticacaoContext';
 
 const AutenticacaoScreen = () => {
@@ -20,6 +20,7 @@ const AutenticacaoScreen = () => {
             setUsuarioAutenticado(resultado);
             navigation.navigate('PagamentoNavigator');
         } else {
+            setUsuarioAutenticado({});
             console.log('erro autenticacao');
         }
     };
