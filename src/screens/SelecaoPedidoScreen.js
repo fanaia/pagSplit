@@ -23,7 +23,9 @@ const SelecaoPedidoScreen = () => {
         );
 
         if (resultado.statusCode === 200) {
-            navigation.navigate('InformacaoPedidoScreen');
+            navigation.navigate('InformacaoPedidoScreen', {
+                pedido: resultado.dados,
+            });
         } else {
             console.log('pedido nao encontrado');
         }

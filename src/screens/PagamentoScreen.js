@@ -1,12 +1,14 @@
 import React, {useState} from 'react';
 import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import TipoPagamento from '../components/TipoPagamento';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 
 // import { Container } from './styles';
 
 const PagamentoScreen = () => {
     const navigation = useNavigation();
+    const route = useRoute();
+    const pedido = route.params?.pedido;
 
     const [valorPagamento, setValorPagamento] = useState('0,00');
 
@@ -17,6 +19,7 @@ const PagamentoScreen = () => {
     return (
         <View>
             <Text>Pagamanto</Text>
+            <Text>Pedido {pedido.IDPedido}</Text>
             <View>
                 <TipoPagamento />
 
