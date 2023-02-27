@@ -24,7 +24,7 @@ const PagamentoScreen = () => {
                 {pedido.IDTipoPedido === 10
                     ? `Mesa ${pedido.NumeroMesa}`
                     : pedido.IDTipoPedido === 20
-                    ? `Mesa ${pedido.NumeroComanda}`
+                    ? `Comanda ${pedido.NumeroComanda}`
                     : 'Balcão'}
             </Text>
             <View>
