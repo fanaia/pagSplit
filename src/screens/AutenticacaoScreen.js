@@ -12,14 +12,15 @@ const AutenticacaoScreen = () => {
     const [chaveAcesso, setChaveAcesso] = useState('');
 
     const handleAutenticar = async () => {
+        console.log('autenticar');
         const resultado = await Autenticar(chaveAcesso);
+        console.log(resultado);
 
         if (resultado.statusCode === 200) {
             setUsuarioAutenticado(resultado.dados);
             navigation.navigate('PagamentoNavigator');
         } else {
             setUsuarioAutenticado({});
-            console.log('erro autenticacao');
         }
     };
 
