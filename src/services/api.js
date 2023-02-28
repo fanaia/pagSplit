@@ -1,7 +1,13 @@
 import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const Api = axios.create({
-    baseURL: 'http://192.168.1.21:7777',
-});
+async function getApi() {
+    const ip = await AsyncStorage.getItem('ip');
+    const Api = axios.create({
+        baseURL: ip,
+    });
 
-export default Api;
+    return Api;
+}
+
+export default getApi;

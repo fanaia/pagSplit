@@ -1,10 +1,12 @@
-import Api from './Api';
+import getApi from './Api';
 
 export async function Autenticar(chaveAcesso) {
+    const api = await getApi();
+    console.log(api);
+
     try {
-        const resultado = await Api.get(
-            `/api/autenticacao/senha/${chaveAcesso}`,
-        )
+        const resultado = await api
+            .get(`/api/autenticacao/senha/${chaveAcesso}`)
             .then(response => {
                 const statusCode = response.status;
                 return {dados: response.data, statusCode};
@@ -16,6 +18,7 @@ export async function Autenticar(chaveAcesso) {
 
         return resultado;
     } catch (erro) {
+        console.log(erro);
         return {};
     }
 }
