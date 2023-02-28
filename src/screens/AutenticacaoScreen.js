@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react';
-import {View, TextInput, Button} from 'react-native';
+import {View, TextInput, Button, Text} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
 import {Autenticar} from '../services/AutenticacaoService';
@@ -32,6 +32,13 @@ const AutenticacaoScreen = () => {
                 maxLength={6}
             />
             <Button title="Autenticar" onPress={handleAutenticar} />
+
+            <View>
+                <Button
+                    onPress={() => navigation.navigate('ConfiguracaoScreen')}
+                    title="Configuração"
+                />
+            </View>
         </View>
     );
 };
