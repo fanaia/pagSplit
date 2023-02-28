@@ -1,14 +1,20 @@
 import React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
 
 import {AutenticacaoProvider} from './src/contexts/AutenticacaoContext';
 import AppNavigator from './src/navigation/AppNavigator';
 import RootStackScreen from './src/screens/RootStackScreen';
 
 export default function App() {
-    return <RootStackScreen />;
+    return (
+        <NavigationContainer>
+            <RootStackScreen />
+        </NavigationContainer>
+    );
     // return (
-    //     <AutenticacaoProvider>
+    //     <NavigationContainer><AutenticacaoProvider>
     //         <AppNavigator />
     //     </AutenticacaoProvider>
+    //</NavigationContainer>
     // );
 }
