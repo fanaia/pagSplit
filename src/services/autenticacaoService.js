@@ -2,7 +2,6 @@ import getApi from './Api';
 
 export async function Autenticar(chaveAcesso) {
     const api = await getApi();
-    console.log(api);
 
     try {
         const resultado = await api
@@ -13,12 +12,11 @@ export async function Autenticar(chaveAcesso) {
             })
             .catch(error => {
                 const statusCode = error.response.status;
-                return {dados: null, statusCode};
+                return {dados: error, statusCode};
             });
 
         return resultado;
     } catch (erro) {
-        console.log(erro);
         return {};
     }
 }

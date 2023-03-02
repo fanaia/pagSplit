@@ -1,19 +1,18 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, Button, TextInput} from 'react-native';
+import {View, Text, Button, TextInput, ActivityIndicator} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {Alert} from 'react-native/Libraries/Alert/Alert';
 
 const ConfiguracaoScreen = () => {
     const navigation = useNavigation();
+    const [carregando, setCarregando] = useState(false);
 
     const [ip, setIp] = useState('');
-    const [ipInicial, setIpInicial] = useState('');
 
     useEffect(() => {
         AsyncStorage.getItem('ip').then(value => {
             if (value) {
-                setIpInicial(value);
                 setIp(value);
             }
         });
@@ -39,7 +38,11 @@ const ConfiguracaoScreen = () => {
                 value={ip}
                 onChangeText={setIp}
             />
-            <Button onPress={handleSalvar} title="Salvar Configurações" />
+            {carregando ? (
+                <ActivityIndicator />
+            ) : (
+                <Button onPress={handleSalvar} title="Salvar Configurações" />
+            )}
         </View>
     );
 };

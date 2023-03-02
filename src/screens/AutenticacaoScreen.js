@@ -1,5 +1,12 @@
 import React, {useState, useContext} from 'react';
-import {View, TextInput, Button, Text} from 'react-native';
+import {
+    View,
+    TextInput,
+    Button,
+    Text,
+    ActivityIndicator,
+    Alert,
+} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
 import {Autenticar} from '../services/AutenticacaoService';
@@ -8,20 +15,24 @@ import {AutenticacaoContext} from '../contexts/AutenticacaoContext';
 const AutenticacaoScreen = () => {
     const navigation = useNavigation();
     const {setUsuarioAutenticado} = useContext(AutenticacaoContext);
+    const [carregando, setCarregando] = useState(false);
 
     const [chaveAcesso, setChaveAcesso] = useState('');
 
     const handleAutenticar = async () => {
-        console.log('autenticar');
+        setCarregando(true);
+
         const resultado = await Autenticar(chaveAcesso);
-        console.log(resultado);
 
         if (resultado.statusCode === 200) {
             setUsuarioAutenticado(resultado.dados);
             navigation.navigate('PagamentoNavigator');
         } else {
+            Alert.alert('Autenticação', 'Chave de acesso inválida!');
             setUsuarioAutenticado({});
         }
+
+        setCarregando(false);
     };
 
     return (
@@ -32,8 +43,11 @@ const AutenticacaoScreen = () => {
                 keyboardType="numeric"
                 maxLength={6}
             />
-            <Button title="Autenticar" onPress={handleAutenticar} />
-
+            {carregando ? (
+                <ActivityIndicator />
+            ) : (
+                <Button title="Autenticar" onPress={handleAutenticar} />
+            )}
             <View>
                 <Button
                     onPress={() => navigation.navigate('ConfiguracaoScreen')}
