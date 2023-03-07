@@ -13,7 +13,7 @@ const PagamentoScreen = () => {
     const [valorPagamento, setValorPagamento] = useState('0,00');
 
     function handleAvancar() {
-        navigation.navigate('ScreenPagamentoPix');
+        navigation.navigate('PagamentoPixScreen');
     }
 
     return (
