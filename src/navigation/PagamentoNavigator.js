@@ -7,6 +7,8 @@ import PagamentoScreen from '../screens/PagamentoScreen';
 import PagamentoPixScreen from '../screens/PagamentoPixScreen';
 import PagamentoCartaoScreen from '../screens/PagamentoCreditoScreen';
 import PagamentoDinheiroScreen from '../screens/PagamentoDinheiroScreen';
+import PagamentoConfirmadoScreen from '../screens/PagamentoConfirmadoScreen';
+import PagamentoErroScreen from '../screens/PagamentoErroScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -33,6 +35,14 @@ const PagamentoNavigator = () => {
             <Stack.Screen
                 name="PagamentoDinheiroScreen"
                 component={PagamentoDinheiroScreen}
+            />
+            <Stack.Screen
+                name="PagamentoConfirmadoScreen"
+                component={PagamentoConfirmadoScreen}
+            />
+            <Stack.Screen
+                name="PagamentoErroScreen"
+                component={PagamentoErroScreen}
             />
         </Stack.Navigator>
     );

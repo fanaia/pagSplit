@@ -1,7 +1,7 @@
-import getApi from './Api';
+import {getApiPDV7} from './Api';
 
 export async function Autenticar(chaveAcesso) {
-    const api = await getApi();
+    const api = await getApiPDV7();
 
     try {
         const resultado = await api
